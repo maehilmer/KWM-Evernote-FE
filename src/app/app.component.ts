@@ -1,13 +1,30 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {NoteListComponent} from "./note-list/note-list.component";
+import {Label, Todo, Note, Image} from "./shared/note";
+import {NoteDetailsComponent} from "./note-details/note-details.component";
 
 @Component({
-  selector: 'app-root',
+  selector: 'kwmen-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
+  /*
   title = 'kwmevernote';
+  listOn = true; // entscheidet, ob Listenansicht aktiviert ist
+  detailsOn = false; // entscheidet, ob Detailansicht aktiviert ist
+
+  note: Note | undefined;
+
+  showList() {
+    this.listOn = true;
+    this.detailsOn = false;
+  }
+  showDetails(note: Note) {
+    this.note = note;
+    this.listOn = false;
+    this.detailsOn = true;
+  } */
 }
