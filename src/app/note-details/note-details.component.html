@@ -1,61 +1,68 @@
 @if (note) {
 
-    <!-- ZURÜCK -->
-    <div class="ui grid">
-      <div class="twelve wide column">
-        <button [routerLink]="'/notes'" class="circular ui icon button">
-          <i class="icon arrow left"></i>
-        </button>
-        <!-- LISTE -->
-        <div class="ui small label ui">
-          Die Notiz befindet sich in Liste {{ note.listoverview_id }}
-        </div>
-      </div>
-      <div class="four wide column right aligned">
-        <!-- UPDATEN  sf-->
-        <button (click)="removeBook()" class="circular ui icon button">
-          <i class="icon redo alternate"></i>
-        </button>
-
-        <!-- LÖSCHEN -->
-        <button (click)="removeBook()" class="circular red ui icon button">
-          <i class="icon trash"></i>
-        </button>
+  <!-- ZURÜCK -->
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <button [routerLink]="'/notes'" class="circular ui icon button">
+        <i class="icon arrow left"></i>
+      </button>
+      <!-- LISTE -->
+      <div class="ui small label ui">
+        Die Notiz befindet sich in Liste {{ note.listoverview_id }}
       </div>
     </div>
+    <div class="four wide column right aligned">
+      <!-- UPDATEN  sf-->
+      <button (click)="removeBook()" class="circular ui icon button">
+        <i class="icon redo alternate"></i>
+      </button>
 
-    <!-- TITEL -->
-    <div class="ui segment">
-      <h2 class="ui header">{{ note.title }}</h2>
+      <!-- LÖSCHEN -->
+      <button (click)="removeBook()" class="circular red ui icon button">
+        <i class="icon trash"></i>
+      </button>
+    </div>
+  </div>
 
-      <!-- LABEL(S) -->
-      @for (label of note.labels; track label) {
-        <div class="ui tag label"> {{ label.name }} </div>
-      }
+
+  <!-- TITEL -->
+  <div class="ui segment">
+    <h2 class="ui header">{{ note.title }}</h2>
+
+    <!-- LABEL(S) -->
+    @for (label of note.labels; track label) {
+      <div class="ui tag label"> {{ label.name }}</div>
+    }
 
 
     <!-- BESCHREIBUNG -->
-      <h5 class="ui header">
-        <i class="quote left icon"></i>
-        <div class="content">
-          Beschreibung
-          <div class="sub header"> {{ note.description }}</div>
+    <h5 class="ui header">
+      <i class="quote left icon"></i>
+      <div class="content">
+        Beschreibung
+        <div class="sub header"> {{ note.description }}</div>
+      </div>
+    </h5>
+
+    <div class="ui hidden divider"></div>
+    <div class="ui divider"></div>
+
+    <!-- BILDER -->
+    <div>
+      @if (note.images && note.images[0]) {
+        <h4>Bilder</h4>
+        <div class="ui small images">
+          @for (thumbnail of note.images; track thumbnail) {
+            <img class="ui rounded image"
+                 [src]="thumbnail.url"> <!-- Mit eckigen Klammern hat man Property Mapping -- dynamisch zusweisen -->
+          }
         </div>
-      </h5>
+      }
     </div>
 
-  <!-- BILDER -->
-  <div class="ui segment">
-    @if (note.images && note.images[0]) {
-      <h4>Bilder</h4>
-      <div class="ui small images">
-        @for (thumbnail of note.images; track thumbnail) {
-          <img class="ui rounded image"
-               [src]="thumbnail.url"> <!-- Mit eckigen Klammern hat man Property Mapping -- dynamisch zusweisen -->
-        }
-      </div>
-    }
   </div>
+
+  <div class="ui hidden divider"></div>
 
   <!-- TO DO -->
   <div>
