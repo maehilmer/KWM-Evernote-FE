@@ -20,12 +20,12 @@ export class NoteDetailsComponent implements OnInit {
   ) { }
   ngOnInit() {
     const params = this.route.snapshot.params;
-    this.kwmen.getSingle(params['id']).subscribe((n:Note) => this.note = n);
+    this.kwmen.getSingleNote(params['id']).subscribe((n:Note) => this.note = n);
   }
 
-  removeBook() {
+  removeNote() {
     if (confirm('Notiz wirklich löschen?')) {
-      this.kwmen.remove(this.note.id)
+      this.kwmen.removeNote(this.note.id)
         .subscribe((res: any) => this.router.navigate(['../'], {
           relativeTo:
           this.route

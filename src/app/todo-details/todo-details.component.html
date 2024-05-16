@@ -1,0 +1,74 @@
+<!-- Dieses Template stellt die To Do Details dar -->
+
+@if (todo) {
+
+  <!-- ZURÜCK -->
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <button [routerLink]="'/todos'" class="circular ui icon button">
+        <i class="icon arrow left"></i>
+      </button>
+      <!-- NOTIZ -->
+      <div class="ui small label ui">
+        Das To Do befindet sich in Notiz {{ todo.note_id }}
+      </div>
+    </div>
+    <div class="four wide column right aligned">
+      <!-- UPDATEN -->
+      <button (click)="removeTodo()" class="circular ui icon button">
+        <i class="icon redo alternate"></i>
+      </button>
+
+      <!-- LÖSCHEN -->
+      <button (click)="removeTodo()" class="circular red ui icon button">
+        <i class="icon trash"></i>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- TITEL -->
+  <div class="ui segment">
+    <h2 class="ui header">{{ todo.title }}</h2>
+    <p> Fällig am {{ todo.due }} </p>
+
+    @if (todo.isPublic) {
+      <p>Dieses To Do ist öffentlich.</p>
+    } @else {
+      <p>Dieses To Do ist privat.</p>
+    }
+
+    <!-- LABEL(S) -->
+    @for (label of todo.labels; track label) {
+      <div class="ui tag label"> {{ label.name }}</div>
+    }
+
+
+    <!-- BESCHREIBUNG -->
+    <h5 class="ui header">
+      <i class="quote left icon"></i>
+      <div class="content">
+        Beschreibung
+        <div class="sub header"> {{ todo.description }}</div>
+      </div>
+    </h5>
+
+    <div class="ui hidden divider"></div>
+    <div class="ui divider"></div>
+
+    <!-- BILDER -->
+    <div>
+      @if (todo.images && todo.images[0]) {
+        <h4>Bilder</h4>
+        <div class="ui small images">
+          @for (thumbnail of todo.images; track thumbnail) {
+            <img class="ui rounded image"
+                 [src]="thumbnail.url"> <!-- Mit eckigen Klammern hat man Property Mapping -- dynamisch zusweisen -->
+          }
+        </div>
+      }
+    </div>
+
+  </div>
+
+}

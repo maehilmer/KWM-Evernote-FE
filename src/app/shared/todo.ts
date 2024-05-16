@@ -9,5 +9,6 @@ export class Todo {
               public due: Date,
               public isPublic: boolean,
               public note_id: number,
-              public labels?: Label[],) { }
+              public labels?: Label[],
+              public images?: Image[]) { }
 }
