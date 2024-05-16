@@ -6,6 +6,8 @@ import {TodoListComponent} from "./todo-list/todo-list.component";
 import {TodoDetailsComponent} from "./todo-details/todo-details.component";
 import {ListoverviewListComponent} from "./listoverview-list/listoverview-list.component";
 import {ListoverviewDetailsComponent} from "./listoverview-details/listoverview-details.component";
+import {LabelListComponent} from "./label-list/label-list.component";
+import {LabelDetailsComponent} from "./label-details/label-details.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,5 +17,7 @@ export const routes: Routes = [
   { path: 'todos', component: TodoListComponent },
   { path: 'todos/:id', component: TodoDetailsComponent },
   { path: 'listoverviews', component: ListoverviewListComponent },
-  { path: 'listoverviews/:id', component: ListoverviewDetailsComponent }
+  { path: 'listoverviews/:id', component: ListoverviewDetailsComponent },
+  { path: 'labels', component: LabelListComponent },
+  { path: 'labels/:id', component: LabelDetailsComponent }
 ];

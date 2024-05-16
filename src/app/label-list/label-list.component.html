@@ -1,0 +1,20 @@
+<div class="ui middle aligned selection divided list">
+  @for (label of labels; track label) {
+    <a class="item kwmen-label-list-item" [label]="label"
+       [routerLink]="[label.id.toString()]"> <!-- id ist eine Nummer, es wird aber string benötigt-->
+    </a>
+  }
+
+  <!-- Daten werden asynchron geladen, deshalb Hinweis, falls es länger dauert -->
+  @if(!labels){
+    <div class="ui active dimmer">
+      <div class="ui large text loader">Daten werden geladen...</div>
+    </div>
+  }
+
+  <!-- Wenn keine Daten vorhanden sind... -->
+  @if(labels && !labels.length){
+    <p>Es wurden noch keine Labels gefunden.</p>
+  }
+
+</div>

@@ -1,0 +1,27 @@
+@if (label) {
+
+  <!-- ZURÜCK -->
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <button [routerLink]="'/labels'" class="circular ui icon button">
+        <i class="icon arrow left"></i>
+      </button>
+    </div>
+    <div class="four wide column right aligned">
+      <!-- UPDATEN  sf-->
+      <button (click)="removeLabel()" class="circular ui icon button">
+        <i class="icon redo alternate"></i>
+      </button>
+
+      <!-- LÖSCHEN -->
+      <button (click)="removeLabel()" class="circular red ui icon button">
+        <i class="icon trash"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- TITEL -->
+  <div class="ui segment">
+    <h2 class="ui header">{{ label.name }}</h2>
+  </div>
+}
