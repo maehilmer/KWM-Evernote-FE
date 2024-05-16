@@ -1,0 +1,44 @@
+@if (listoverview) {
+
+  <!-- ZURÜCK -->
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <button [routerLink]="'/listoverviews'" class="circular ui icon button">
+        <i class="icon arrow left"></i>
+      </button>
+      <!-- LISTE -->
+      @if (listoverview.isPublic) {
+        <div class="ui small label green basic ui">
+          <i class="icon info"></i> Diese Liste ist <u>öffentlich</u>.
+        </div>
+      } @else {
+        <div class="ui small label red basic ui">
+          <i class="icon info"></i> Diese Liste ist <u>privat</u>.
+        </div>
+      }
+    </div>
+    <div class="four wide column right aligned">
+      <!-- UPDATEN  sf-->
+      <button (click)="removeListoverview()" class="circular ui icon button">
+        <i class="icon redo alternate"></i>
+      </button>
+
+      <!-- LÖSCHEN -->
+      <button (click)="removeListoverview()" class="circular red ui icon button">
+        <i class="icon trash"></i>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- TITEL -->
+  <div class="ui segment">
+    <h2 class="ui header">{{ listoverview.title }}</h2>
+
+
+
+  </div>
+
+
+
+}

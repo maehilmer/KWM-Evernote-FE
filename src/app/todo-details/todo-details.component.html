@@ -12,6 +12,15 @@
       <div class="ui small label ui">
         Das To Do befindet sich in Notiz {{ todo.note_id }}
       </div>
+      @if (todo.isPublic) {
+        <div class="ui small label green basic ui">
+          <i class="icon info"></i> Dieses To Do ist <u>öffentlich</u>.
+        </div>
+      } @else {
+        <div class="ui small label red basic ui">
+          <i class="icon info"></i> Dieses To Do ist <u>privat</u>.
+        </div>
+      }
     </div>
     <div class="four wide column right aligned">
       <!-- UPDATEN -->
@@ -31,12 +40,6 @@
   <div class="ui segment">
     <h2 class="ui header">{{ todo.title }}</h2>
     <p> Fällig am {{ todo.due }} </p>
-
-    @if (todo.isPublic) {
-      <p>Dieses To Do ist öffentlich.</p>
-    } @else {
-      <p>Dieses To Do ist privat.</p>
-    }
 
     <!-- LABEL(S) -->
     @for (label of todo.labels; track label) {

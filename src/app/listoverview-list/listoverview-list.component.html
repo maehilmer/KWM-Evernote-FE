@@ -1,0 +1,20 @@
+<div class="ui middle aligned selection divided list">
+  @for (listoverview of listoverviews; track listoverview) {
+    <a class="item kwmen-listoverview-list-item" [listoverview]="listoverview"
+       [routerLink]="[listoverview.id.toString()]"> <!-- id ist eine Nummer, es wird aber string benötigt-->
+    </a>
+  }
+
+  <!-- Daten werden asynchron geladen, deshalb Hinweis, falls es länger dauert -->
+  @if(!listoverviews){
+    <div class="ui active dimmer">
+      <div class="ui large text loader">Daten werden geladen...</div>
+    </div>
+  }
+
+  <!-- Wenn keine Daten vorhanden sind... -->
+  @if(listoverviews && !listoverviews.length){
+    <p>Es wurden noch keine Listen gefunden.</p>
+  }
+
+</div>

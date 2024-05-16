@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Label, Todo, Note, Image} from "../shared/note";
+import {Note} from "../shared/note";
 import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {NoteFactory} from "../shared/note-factory";

@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Label, Todo, Note, Image} from "../shared/note";
+import {Note} from "./note";
+import {Todo} from "./todo";
+import {Listoverview} from "./listoverview";
+import {Label} from "./label";
 import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, retry, throwError} from "rxjs";
 
@@ -15,7 +18,7 @@ export class KwmevernoteStoreService {
     return throwError(error);
   }
 
-  // NOTIZEN -------------------------------------------------------------------------------------------
+  // NOTIZEN -----------------------------------------------------------------------------------------------------------
 
   // Liefert Liste mit allen Notizen; get gibt Observable zurück, das Array mit allen Notizen enthält
   getAllNotes(): Observable<Array<Note>> {
@@ -37,7 +40,7 @@ export class KwmevernoteStoreService {
 
 
 
-  // TODOS -------------------------------------------------------------------------------------------
+  // TODOS -------------------------------------------------------------------------------------------------------------
 
   // Liefert Liste mit allen Todos; get gibt Observable zurück, das Array mit allen Todos enthält
   getAllTodos(): Observable<Array<Todo>> {
@@ -57,4 +60,46 @@ export class KwmevernoteStoreService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+
+  // LISTOVERVIEW ------------------------------------------------------------------------------------------------------
+
+  // Liefert Liste mit allen Listen; get gibt Observable zurück, das Array mit allen Listen enthält
+  getAllListoverviews(): Observable<Array<Listoverview>> {
+    return this.http.get<Array<Listoverview>>(`${this.api}/listoverviews`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  // Liste aufgrund ID erhalten; aufrufen aller Detaildaten einer Liste
+  getSingleListoverview(id: number): Observable<Listoverview> {
+    return this.http.get<Listoverview>(`${this.api}/listoverviews/${id}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  // LÖSCHEN
+  removeListoverview(id: number): Observable<any> {
+    return this.http.delete(`${this.api}/listoverviews/${id}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+
+
+  // LABELS ------------------------------------------------------------------------------------------------------------
+
+  // Liefert Liste mit allen Labels; get gibt Observable zurück, das Array mit allen Labels enthält
+  getAllLabels(): Observable<Array<Label>> {
+    return this.http.get<Array<Label>>(`${this.api}/labels`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  // Label aufgrund ID erhalten; aufrufen aller Detaildaten eines Labels
+  getSingleLabel(id: number): Observable<Label> {
+    return this.http.get<Label>(`${this.api}/labels/${id}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  // LÖSCHEN
+  removeLabel(id: number): Observable<any> {
+    return this.http.delete(`${this.api}/labels/${id}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
 }
