@@ -73,6 +73,7 @@ export class TodoFormComponent {
     }
   }
 
+
   updateErrorMessages() {
     console.log("Is invalid? " + this.todoForm.invalid);
     this.errors = {};

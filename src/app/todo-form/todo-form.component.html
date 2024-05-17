@@ -32,7 +32,7 @@
   <!-- Fälligkeitsdatum -->
   <div class="field">
     <label for="due">Datum</label>
-    <input type="due" id="due" formControlName="due">
+    <input type="date" id="due" formControlName="due" >
     @if (errors['due']) {
       <div class="ui negative message"> {{ errors['due'] }}</div>
     }
