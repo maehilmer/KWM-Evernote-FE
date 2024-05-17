@@ -1,0 +1,80 @@
+<div class="ui grid">
+  <div class="twelve wide column">
+    <button [routerLink]="'/notes'" class="circular ui icon button">
+      <i class="icon arrow left"></i>
+    </button>
+    <div class="ui label large green">
+      Notizformular
+    </div>
+
+  </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<form class="ui large form" [formGroup]="noteForm" (ngSubmit)="submitForm()">
+  <input type="hidden" formControlName="id">
+  <div class="field">
+    <!-- Titel -->
+    <label>Titel</label>
+    <input formControlName="title">
+    @if (errors['title']) {
+      <div class="ui negative message"> {{ errors['title'] }}</div>
+    }
+  </div>
+
+  <!-- Beschreibung -->
+  <div class="field">
+    <label>Beschreibung</label>
+    <textarea formControlName="description" rows="5"></textarea>
+  </div>
+
+
+  <!-- User -- Select -->
+
+  <!-- Liste -- Select -->
+  <div class="field">
+    <label for="listoverview_id">Wähle eine Liste aus</label>
+    <select id="listoverview_id" formControlName="listoverview_id">
+      @for (listoverview of listoverviews; track listoverview) {
+        <option [value]="listoverview.id">{{ listoverview.title }}</option>
+      }
+    </select>
+  </div>
+
+  <!-- Todos -- Multi select? -->
+
+
+  <!-- Labels -- Multi Select? -->
+
+  <!-- Bilder -->
+  <div class="field">
+    <label>Bilder</label>
+    <div formArrayName="images">
+      @for (control of images.controls; let i = $index, l = $last; track control) {
+        <div class="fields" [formGroupName]="i">
+          <input type="hidden" formControlName="id">
+          <div class="nine wide field">
+            <input formControlName="url" placeholder="http://bild.com">
+          </div>
+          <div class="six wide field">
+            <input formControlName="title" placeholder="Bild Titel">
+          </div>
+          @if (l) {
+            <div class="one wide field">
+              <button (click)="addThumbnailControl()" class="ui large button" type="button">+</button>
+            </div>
+          }
+        </div>
+      }
+    </div>
+    @if (errors['images']) {
+      <div class="ui negative message">{{ errors['images'] }}</div>
+    }
+  </div>
+
+  <!-- Speichern -->
+  <button type="submit" class="ui button" [disabled]="noteForm.invalid">
+    Speichern
+  </button>
+</form>

@@ -1,5 +1,28 @@
 <div class="ui middle aligned selection divided list">
+
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <h1>Notizen</h1>
+    </div>
+    <div class="four wide column right aligned">
+      <div class="ui right pointing label">
+        Neue Notiz hinzufügen!
+      </div>
+      <a [routerLink]="['../admin']" class="circular ui icon button">
+        <i class="icon plus"></i>
+      </a>
+    </div>
+  </div>
+  <div>
+    Liste aller Notizen
+  </div>
+
+  <div class="ui hidden divider"></div>
+
   @for (note of notes; track note) {
+
+    <!-- [note]="note" darüber werden extern die Daten vom genauen Element (Note-List-Item) hinein geladen -> definiert im note-list-item.ts
+         Eckige Klammern ermöglicht Property Binding in Angular -->
     <a class="item kwmen-note-list-item" [note]="note"
        [routerLink]="[note.id.toString()]"> <!-- id ist eine Nummer, es wird aber string benötigt-->
     </a>

@@ -25,7 +25,7 @@
     <div class="four wide column right aligned">
       <!-- UPDATEN -->
       <button (click)="removeTodo()" class="circular ui icon button">
-        <i class="icon redo alternate"></i>
+        <i class="icon pencil alternate"></i>
       </button>
 
       <!-- LÖSCHEN -->
@@ -39,7 +39,7 @@
   <!-- TITEL -->
   <div class="ui segment">
     <h2 class="ui header">{{ todo.title }}</h2>
-    <p> Fällig am {{ todo.due }} </p>
+    <p> Fällig am {{ todo.due | date: 'longDate'}} </p>
 
     <!-- LABEL(S) -->
     @for (label of todo.labels; track label) {

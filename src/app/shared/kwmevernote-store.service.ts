@@ -9,6 +9,9 @@ import {catchError, Observable, retry, throwError} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
+
+// Services in Angular sind dazu da, Daten oder Dienste über Komponenten hinweg zur Verfügung zu stellen
+// mit dem Service verbinden man sich mit Server und holt von dort die Notizen etc. --> Observable Pattern
 export class KwmevernoteStoreService {
   private api = 'http://kwmevernote.s2110456011.student.kwmhgb.at/api';
   constructor(private http: HttpClient) { }
@@ -21,6 +24,7 @@ export class KwmevernoteStoreService {
   // NOTIZEN -----------------------------------------------------------------------------------------------------------
 
   // Liefert Liste mit allen Notizen; get gibt Observable zurück, das Array mit allen Notizen enthält
+  // Observables können dauerhaft Daten liefern, sie sind ein Daten-Strom (vereinfach ausgedrückt)
   getAllNotes(): Observable<Array<Note>> {
     return this.http.get<Array<Note>>(`${this.api}/notes`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler))
@@ -38,6 +42,17 @@ export class KwmevernoteStoreService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  // SAVE
+  createNote(note: Note): Observable<any> {
+    return this.http.post(`${this.api}/notes`, note)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  // UPDATE
+  updateNote(note: Note): Observable<any> {
+    return this.http.put(`${this.api}/notes/${note.id}`, note)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
 
 
   // TODOS -------------------------------------------------------------------------------------------------------------
@@ -57,6 +72,18 @@ export class KwmevernoteStoreService {
   // LÖSCHEN
   removeTodo(id: number): Observable<any> {
     return this.http.delete(`${this.api}/todos/${id}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  // SAVE
+  createTodo(todo: Todo): Observable<any> {
+    return this.http.post(`${this.api}/todos`, todo)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  // UPDATE
+  updateTodo(todo: Todo): Observable<any> {
+    return this.http.put(`${this.api}/todos/${todo.id}`, todo)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
@@ -81,6 +108,18 @@ export class KwmevernoteStoreService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  // SAVE
+  createListoverview(listoverview: Listoverview): Observable<any> {
+    return this.http.post(`${this.api}/listoverviews`, listoverview)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  // UPDATE
+  updateListoverview(listoverview: Listoverview): Observable<any> {
+    return this.http.put(`${this.api}/listoverviews/${listoverview.id}`, listoverview)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
 
 
   // LABELS ------------------------------------------------------------------------------------------------------------
@@ -100,6 +139,18 @@ export class KwmevernoteStoreService {
   // LÖSCHEN
   removeLabel(id: number): Observable<any> {
     return this.http.delete(`${this.api}/labels/${id}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  // SAVE
+  createLabel(label: Label): Observable<any> {
+    return this.http.post(`${this.api}/labels`, label)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  // UPDATE
+  updateLabel(label: Label): Observable<any> {
+    return this.http.put(`${this.api}/labels/${label.id}`, label)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 }

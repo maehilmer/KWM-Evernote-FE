@@ -3,11 +3,12 @@ import {Label, Todo, Image} from "../shared/todo";
 import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {TodoFactory} from "../shared/todo-factory";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'kwmen-todo-details',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './todo-details.component.html',
   styles: ``
 })

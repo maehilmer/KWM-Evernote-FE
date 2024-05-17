@@ -13,8 +13,8 @@
     </div>
     <div class="four wide column right aligned">
       <!-- UPDATEN  sf-->
-      <button (click)="removeNote()" class="circular ui icon button">
-        <i class="icon redo alternate"></i>
+      <button [routerLink]="['../../admin', note.id]" class="circular ui icon button">
+        <i class="icon pencil alternate"></i>
       </button>
 
       <!-- LÖSCHEN -->
@@ -72,7 +72,7 @@
         <div class="card small">
           <div class="content">
             <h4>{{ todo.title }}</h4>
-            <div class="meta">Fällig am: {{ todo.due }}</div>
+            <div class="meta">Fällig am {{ todo.due | date: 'longDate'}}</div>
             <div class="description">
               {{ todo.description }}
             </div>

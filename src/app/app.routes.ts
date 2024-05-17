@@ -8,6 +8,7 @@ import {ListoverviewListComponent} from "./listoverview-list/listoverview-list.c
 import {ListoverviewDetailsComponent} from "./listoverview-details/listoverview-details.component";
 import {LabelListComponent} from "./label-list/label-list.component";
 import {LabelDetailsComponent} from "./label-details/label-details.component";
+import {NoteFormComponent} from "./note-form/note-form.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,5 +20,16 @@ export const routes: Routes = [
   { path: 'listoverviews', component: ListoverviewListComponent },
   { path: 'listoverviews/:id', component: ListoverviewDetailsComponent },
   { path: 'labels', component: LabelListComponent },
-  { path: 'labels/:id', component: LabelDetailsComponent }
+  { path: 'labels/:id', component: LabelDetailsComponent },
+  // Route zum Neulegen einer Notiz
+  { path: 'admin', component: NoteFormComponent },
+  // Route zum Updaten einer Notiz
+  { path: 'admin/:id', component: NoteFormComponent },
+
+  //{ path: 'admin', component: TodoFormComponent },
+  //{ path: 'admin/:id', component: TodoFormComponent },
+  //{ path: 'admin', component: ListoverviewFormComponent },
+  //{ path: 'admin/:id', component: ListoverviewFormComponent },
+  //{ path: 'admin', component: LabelFormComponent },
+  //{ path: 'admin/:id', component: LabelFormComponent }
 ];

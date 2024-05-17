@@ -22,23 +22,14 @@
 
   <!-- Menü -->
   <div class="ui inverted menu">
-    <a routerLink="home" routerLinkActive="active" class="active item">
-      Home
-    </a>
-    <a routerLink="notes" routerLinkActive="active" class="item">
-      Notizen
-    </a>
-    <a routerLink="todos" routerLinkActive="active" class="item">
-      To Do's
-    </a>
-    <a routerLink="listoverviews" routerLinkActive="active" class="item">
-      Listen
-    </a>
-    <a routerLink="labels" routerLinkActive="active" class="item">
-      Labels
-    </a>
+    <!-- kein href, weil das würde Seite neu laden und die Single Page Applictaion "ruinieren" -->
+    <a routerLink="home" routerLinkActive="active" class="active item">Home</a>
+    <a routerLink="notes" routerLinkActive="active" class="item">Notizen</a>
+    <a routerLink="todos" routerLinkActive="active" class="item">To Do's</a>
+    <a routerLink="listoverviews" routerLinkActive="active" class="item">Listen</a>
+    <a routerLink="labels" routerLinkActive="active" class="item">Labels</a>
   </div>
 
-  <!-- Inhalt, der je nach Route nachgeladen wird -->
+  <!-- an dieser Stelle wird Inhalt angezeigt, der von Router ausgewählt wurde-->
   <router-outlet></router-outlet>
 </div>
