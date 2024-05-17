@@ -9,7 +9,7 @@
     </div>
     <div class="four wide column right aligned">
       <!-- UPDATEN  sf-->
-      <button (click)="removeLabel()" class="circular ui icon button">
+      <button [routerLink]="['../../adminLabel', label.id]" class="circular ui icon button">
         <i class="icon pencil alternate"></i>
       </button>
 

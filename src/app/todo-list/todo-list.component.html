@@ -1,4 +1,23 @@
 <div class="ui middle aligned selection divided list">
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <h1>Todos</h1>
+    </div>
+    <div class="four wide column right aligned">
+      <div class="ui right pointing label">
+        Neues Todo hinzufügen!
+      </div>
+      <a [routerLink]="['../adminTodo']" class="circular ui icon button">
+        <i class="icon plus"></i>
+      </a>
+    </div>
+  </div>
+  <div>
+    Liste aller Todos
+  </div>
+
+  <div class="ui hidden divider"></div>
+
   @for (todo of todos; track todo) {
     <a class="item kwmen-todo-list-item" [todo]="todo"
        [routerLink]="[todo.id.toString()]"> <!-- id ist eine Nummer, es wird aber string benötigt-->

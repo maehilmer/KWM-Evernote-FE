@@ -1,4 +1,25 @@
 <div class="ui middle aligned selection divided list">
+
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <h1>Labels</h1>
+    </div>
+    <div class="four wide column right aligned">
+      <div class="ui right pointing label">
+        Neues Label hinzufügen!
+      </div>
+      <a [routerLink]="['../adminLabel']" class="circular ui icon button">
+        <i class="icon plus"></i>
+      </a>
+    </div>
+  </div>
+  <div>
+    Liste aller Labels
+  </div>
+
+  <div class="ui hidden divider"></div>
+
+
   @for (label of labels; track label) {
     <a class="item kwmen-label-list-item" [label]="label"
        [routerLink]="[label.id.toString()]"> <!-- id ist eine Nummer, es wird aber string benötigt-->

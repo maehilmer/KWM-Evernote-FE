@@ -9,6 +9,9 @@ import {ListoverviewDetailsComponent} from "./listoverview-details/listoverview-
 import {LabelListComponent} from "./label-list/label-list.component";
 import {LabelDetailsComponent} from "./label-details/label-details.component";
 import {NoteFormComponent} from "./note-form/note-form.component";
+import {TodoFormComponent} from "./todo-form/todo-form.component";
+import {ListoverviewFormComponent} from "./listoverview-form/listoverview-form.component";
+import {LabelFormComponent} from "./label-form/label-form.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,15 +24,12 @@ export const routes: Routes = [
   { path: 'listoverviews/:id', component: ListoverviewDetailsComponent },
   { path: 'labels', component: LabelListComponent },
   { path: 'labels/:id', component: LabelDetailsComponent },
-  // Route zum Neulegen einer Notiz
-  { path: 'admin', component: NoteFormComponent },
-  // Route zum Updaten einer Notiz
-  { path: 'admin/:id', component: NoteFormComponent },
-
-  //{ path: 'admin', component: TodoFormComponent },
-  //{ path: 'admin/:id', component: TodoFormComponent },
-  //{ path: 'admin', component: ListoverviewFormComponent },
-  //{ path: 'admin/:id', component: ListoverviewFormComponent },
-  //{ path: 'admin', component: LabelFormComponent },
-  //{ path: 'admin/:id', component: LabelFormComponent }
+  { path: 'admin', component: NoteFormComponent }, // Route zum Neulegen einer Notiz
+  { path: 'admin/:id', component: NoteFormComponent }, // Route zum Updaten einer Notiz
+  { path: 'adminTodo', component: TodoFormComponent },
+  { path: 'adminTodo/:id', component: TodoFormComponent },
+  { path: 'adminList', component: ListoverviewFormComponent },
+  { path: 'adminList/:id', component: ListoverviewFormComponent },
+  { path: 'adminLabel', component: LabelFormComponent },
+  { path: 'adminLabel/:id', component: LabelFormComponent }
 ];

@@ -1,1 +1,39 @@
-<p>listoverview-form works!</p>
+<div class="ui grid">
+  <div class="twelve wide column">
+    <button [routerLink]="'/listoverviews'" class="circular ui icon button">
+      <i class="icon arrow left"></i>
+    </button>
+    <div class="ui label large green">
+      Listenformular
+    </div>
+
+  </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<form class="ui large form" [formGroup]="listoverviewForm" (ngSubmit)="submitForm()">
+  <input type="hidden" formControlName="id">
+  <div class="field">
+    <!-- Titel -->
+    <label>Titel</label>
+    <input formControlName="title">
+    @if (errors['title']) {
+      <div class="ui negative message"> {{ errors['title'] }}</div>
+    }
+  </div>
+
+  <!-- Öffentlich -->
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox" id="isPublic" formControlName="isPublic">
+      <label for="isPublic">Diese Liste ist öffentlich</label>
+    </div>
+  </div>
+
+
+  <!-- Speichern -->
+  <button type="submit" class="ui button" [disabled]="listoverviewForm.invalid">
+    Speichern
+  </button>
+</form>

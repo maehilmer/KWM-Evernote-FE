@@ -1,4 +1,23 @@
 <div class="ui middle aligned selection divided list">
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <h1>Listen</h1>
+    </div>
+    <div class="four wide column right aligned">
+      <div class="ui right pointing label">
+        Neue Liste hinzufügen!
+      </div>
+      <a [routerLink]="['../adminList']" class="circular ui icon button">
+        <i class="icon plus"></i>
+      </a>
+    </div>
+  </div>
+  <div>
+    Liste aller Listen
+  </div>
+
+  <div class="ui hidden divider"></div>
+
   @for (listoverview of listoverviews; track listoverview) {
     <a class="item kwmen-listoverview-list-item" [listoverview]="listoverview"
        [routerLink]="[listoverview.id.toString()]"> <!-- id ist eine Nummer, es wird aber string benötigt-->
