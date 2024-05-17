@@ -1,1 +1,54 @@
-<p>todo-form works!</p>
+<div class="ui grid">
+  <div class="twelve wide column">
+    <button [routerLink]="'/todos'" class="circular ui icon button">
+      <i class="icon arrow left"></i>
+    </button>
+    <div class="ui label large green">
+      Todoformular
+    </div>
+
+  </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<form class="ui large form" [formGroup]="todoForm" (ngSubmit)="submitForm()">
+  <input type="hidden" formControlName="id">
+  <div class="field">
+    <!-- Titel -->
+    <label>Titel</label>
+    <input formControlName="title">
+    @if (errors['title']) {
+      <div class="ui negative message"> {{ errors['title'] }}</div>
+    }
+  </div>
+
+  <!-- Beschreibung -->
+  <div class="field">
+    <label>Beschreibung</label>
+    <textarea formControlName="description" rows="5"></textarea>
+  </div>
+
+  <!-- Fälligkeitsdatum -->
+  <div class="field">
+    <label for="due">Datum</label>
+    <input type="due" id="due" formControlName="due">
+    @if (errors['due']) {
+      <div class="ui negative message"> {{ errors['due'] }}</div>
+    }
+  </div>
+
+  <!-- Öffentlich -->
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox" id="isPublic" formControlName="isPublic">
+      <label for="isPublic">Dieses Todo ist öffentlich</label>
+    </div>
+  </div>
+
+
+  <!-- Speichern -->
+  <button type="submit" class="ui button" [disabled]="todoForm.invalid">
+    Speichern
+  </button>
+</form>

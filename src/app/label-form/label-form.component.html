@@ -1,1 +1,31 @@
-<p>label-form works!</p>
+<div class="ui grid">
+  <div class="twelve wide column">
+    <button [routerLink]="'/labels'" class="circular ui icon button">
+      <i class="icon arrow left"></i>
+    </button>
+    <div class="ui label large green">
+      Labelformular
+    </div>
+
+  </div>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<form class="ui large form" [formGroup]="labelForm" (ngSubmit)="submitForm()">
+  <input type="hidden" formControlName="id">
+  <div class="field">
+    <!-- Titel -->
+    <label>Titel</label>
+    <input formControlName="name">
+    @if (errors['name']) {
+      <div class="ui negative message"> {{ errors['name'] }}</div>
+    }
+  </div>
+
+
+  <!-- Speichern -->
+  <button type="submit" class="ui button" [disabled]="labelForm.invalid">
+    Speichern
+  </button>
+</form>
