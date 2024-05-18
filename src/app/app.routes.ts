@@ -13,6 +13,7 @@ import {TodoFormComponent} from "./todo-form/todo-form.component";
 import {ListoverviewFormComponent} from "./listoverview-form/listoverview-form.component";
 import {LabelFormComponent} from "./label-form/label-form.component";
 import {LoginComponent} from "./login/login.component";
+import {canNavigateToAdminGuard} from "./can-navigate-to-admin.guard";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,8 +26,8 @@ export const routes: Routes = [
   { path: 'listoverviews/:id', component: ListoverviewDetailsComponent },
   { path: 'labels', component: LabelListComponent },
   { path: 'labels/:id', component: LabelDetailsComponent },
-  { path: 'admin', component: NoteFormComponent }, // Route zum Neulegen einer Notiz
-  { path: 'admin/:id', component: NoteFormComponent }, // Route zum Updaten einer Notiz
+  { path: 'admin', component: NoteFormComponent, canActivate:[canNavigateToAdminGuard] }, // Route zum Neulegen einer Notiz
+  { path: 'admin/:id', component: NoteFormComponent, canActivate:[canNavigateToAdminGuard] }, // Route zum Updaten einer Notiz
   { path: 'adminTodo', component: TodoFormComponent },
   { path: 'adminTodo/:id', component: TodoFormComponent },
   { path: 'adminList', component: ListoverviewFormComponent },

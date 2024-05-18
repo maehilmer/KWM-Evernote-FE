@@ -15,7 +15,7 @@ interface Token {
 // Im Service definieren wir uns einerseits den Zugriff auf das REST Service
 // und andererseits Hilfsmethoden, die das Arbeiten erleichtern.
 export class AuthenticationService {
-  private api: string = 'http://kwmevernote.s2110456011.student.kwmhgb.at/auth';
+  private api: string = 'http://kwmevernote.s2110456011.student.kwmhgb.at/api/auth';
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string) {
