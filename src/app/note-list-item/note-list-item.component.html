@@ -5,9 +5,4 @@
 <div class="content">
   <div class="header">{{ note?.title }}</div>
   <div class="description"> {{ note?.description }} </div>
-  <div class="metadata">
-    @for (todo of note?.todos; track todo; let l =$last) {
-      <span>{{ todo.title }} {{ todo.description }}@if(!l){<span>,</span>}</span>
-    }
-  </div>
 </div>

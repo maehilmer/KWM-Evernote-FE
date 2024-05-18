@@ -28,8 +28,15 @@
     <a routerLink="todos" routerLinkActive="active" class="item">To Do's</a>
     <a routerLink="listoverviews" routerLinkActive="active" class="item">Listen</a>
     <a routerLink="labels" routerLinkActive="active" class="item">Labels</a>
+    @if(isLoggedIn()){
+      <a routerLink="admin" routerLinkActive="active" class="item">Admin</a>
+    }
+    <a routerLink="login" routerLinkActive="active" class="item">{{getLoginLabel()}}</a>
   </div>
 
   <!-- an dieser Stelle wird Inhalt angezeigt, der von Router ausgewählt wurde-->
   <router-outlet></router-outlet>
+
+  <div class="ui hidden divider"></div>
+
 </div>

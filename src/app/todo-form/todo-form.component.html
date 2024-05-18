@@ -54,8 +54,8 @@
         <option [value]="note.id">{{ note.title }}</option>
       }
     </select>
-    @if (errors['listoverview_id']) {
-      <div class="ui negative message"> {{ errors['listoverview_id'] }}</div>
+    @if (errors['note_id']) {
+      <div class="ui negative message"> {{ errors['note_id'] }}</div>
     }
   </div>
 

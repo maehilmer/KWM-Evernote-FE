@@ -12,6 +12,7 @@ import {NoteFormComponent} from "./note-form/note-form.component";
 import {TodoFormComponent} from "./todo-form/todo-form.component";
 import {ListoverviewFormComponent} from "./listoverview-form/listoverview-form.component";
 import {LabelFormComponent} from "./label-form/label-form.component";
+import {LoginComponent} from "./login/login.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,5 +32,6 @@ export const routes: Routes = [
   { path: 'adminList', component: ListoverviewFormComponent },
   { path: 'adminList/:id', component: ListoverviewFormComponent },
   { path: 'adminLabel', component: LabelFormComponent },
-  { path: 'adminLabel/:id', component: LabelFormComponent }
+  { path: 'adminLabel/:id', component: LabelFormComponent },
+  { path: 'login', component: LoginComponent}
 ];

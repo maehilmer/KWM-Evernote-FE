@@ -11,17 +11,19 @@
         Die Notiz befindet sich in Liste {{ note.listoverview_id }}
       </div>
     </div>
-    <div class="four wide column right aligned">
-      <!-- UPDATEN  sf-->
-      <button [routerLink]="['../../admin', note.id]" class="circular ui icon button">
-        <i class="icon pencil alternate"></i>
-      </button>
+    @if(authService.isLoggedIn()){
+      <div class="four wide column right aligned">
+        <!-- UPDATEN  sf-->
+        <button [routerLink]="['../../admin', note.id]" class="circular ui icon button">
+          <i class="icon pencil alternate"></i>
+        </button>
 
-      <!-- LÖSCHEN -->
-      <button (click)="removeNote()" class="circular red ui icon button">
-        <i class="icon trash"></i>
-      </button>
-    </div>
+        <!-- LÖSCHEN -->
+        <button (click)="removeNote()" class="circular red ui icon button">
+          <i class="icon trash"></i>
+        </button>
+      </div>
+    }
   </div>
 
 

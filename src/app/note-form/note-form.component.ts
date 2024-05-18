@@ -21,7 +21,6 @@ export class NoteFormComponent {
   images: FormArray;
 
   listoverviews: Array<any> = [];
-  /*todos: Array<any> = [];*/
 
   constructor(
     private fb: FormBuilder,
@@ -56,13 +55,6 @@ export class NoteFormComponent {
     });
   }
 
-  /*
-  loadTodos() {
-    this.kwmen.getAllTodos().subscribe(todos => {
-      this.todos = todos;
-    });
-  } */
-
   initNote() {
     this.buildThumbnailsArray();
     this.noteForm = this.fb.group({
@@ -70,7 +62,6 @@ export class NoteFormComponent {
       title: [this.note.title, Validators.required],
       description: this.note.description,
       listoverview_id: [this.note.listoverview_id, Validators.required],
-      /*todos: this.note.todos,*/
       images: this.images
     });
     this.noteForm.statusChanges.subscribe(() =>
@@ -99,9 +90,10 @@ export class NoteFormComponent {
   }
 
   submitForm() {
-    // leere Werte werden gefiltert
+    // Array-Methode, die ein neues Array mit allen Elementen erstellt, die den Test bestehen, der in der bereitgestellten Funktion implementiert ist
     this.noteForm.value.images = this.noteForm.value.images.filter(
-      (thumbnail: { url: string; }) => thumbnail.url);
+      (thumbnail: { url: string; }) => thumbnail.url); // Thumbnail ist Objekt mit min einer url-Eigenschaft -> Nur Thumbnails mit einer gültigen url bleiben im Array
+
     const note: Note = NoteFactory.fromObject(this.noteForm.value);
 
     //just copy the todos

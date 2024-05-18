@@ -6,6 +6,7 @@ import {NoteFactory} from "../shared/note-factory";
 import {DatePipe} from "@angular/common";
 import {TodoListItemComponent} from "../todo-list-item/todo-list-item.component";
 import {TodoFactory} from "../shared/todo-factory";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'kwmen-note-details',
@@ -19,7 +20,8 @@ export class NoteDetailsComponent implements OnInit {
   constructor(
     private kwmen: KwmevernoteStoreService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthenticationService
   ) { }
   ngOnInit() {
     // damit bekommt man ganzen Parameter, also Array
