@@ -40,6 +40,9 @@
         <option [value]="listoverview.id">{{ listoverview.title }}</option>
       }
     </select>
+    @if (errors['listoverview_id']) {
+      <div class="ui negative message"> {{ errors['listoverview_id'] }}</div>
+    }
   </div>
 
   <!-- Todos -- Multi select? -->

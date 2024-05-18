@@ -9,12 +9,13 @@ export class TodoFactory {
     return new Todo(
       rawTodo.id,
       rawTodo.title,
+      rawTodo.description,
       typeof(rawTodo.due) === 'string' ?
         new Date(rawTodo.due) : rawTodo.due,
       rawTodo.isPublic,
+      rawTodo.note_id,
       rawTodo.labels,
-      rawTodo.images,
-      rawTodo.description
+      rawTodo.images
     );
   }
 }

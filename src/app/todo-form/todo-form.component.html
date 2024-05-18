@@ -32,7 +32,7 @@
   <!-- Fälligkeitsdatum -->
   <div class="field">
     <label for="due">Datum</label>
-    <input type="date" id="due" formControlName="due" >
+    <input type="date" id="due" formControlName="due" pattern="\d{4}-\d{2}-\d{2}">
     @if (errors['due']) {
       <div class="ui negative message"> {{ errors['due'] }}</div>
     }
@@ -46,6 +46,44 @@
     </div>
   </div>
 
+  <!-- To Do an Notiz anheften -->
+  <div class="field">
+    <label for="note_id">Wähle eine Notiz aus</label>
+    <select id="note_id" formControlName="note_id">
+      @for (note of notes; track note) {
+        <option [value]="note.id">{{ note.title }}</option>
+      }
+    </select>
+    @if (errors['listoverview_id']) {
+      <div class="ui negative message"> {{ errors['listoverview_id'] }}</div>
+    }
+  </div>
+
+  <!-- Bilder -->
+  <div class="field">
+    <label>Bilder</label>
+    <div formArrayName="images">
+      @for (control of images.controls; let i = $index, l = $last; track control) {
+        <div class="fields" [formGroupName]="i">
+          <input type="hidden" formControlName="id">
+          <div class="nine wide field">
+            <input formControlName="url" placeholder="http://bild.com">
+          </div>
+          <div class="six wide field">
+            <input formControlName="title" placeholder="Bild Titel">
+          </div>
+          @if (l) {
+            <div class="one wide field">
+              <button (click)="addThumbnailControl()" class="ui large button" type="button">+</button>
+            </div>
+          }
+        </div>
+      }
+    </div>
+    @if (errors['images']) {
+      <div class="ui negative message">{{ errors['images'] }}</div>
+    }
+  </div>
 
   <!-- Speichern -->
   <button type="submit" class="ui button" [disabled]="todoForm.invalid">

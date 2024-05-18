@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
+import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
-import {TodoFormErrorMessages} from "../todo-form/todo-form-error-messages";
 import {TodoFactory} from "../shared/todo-factory";
+import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
 import {Todo} from "../shared/todo";
+import {TodoFormErrorMessages} from "../todo-form/todo-form-error-messages";
+
 
 @Component({
   selector: 'kwmen-todo-form',
@@ -18,6 +19,8 @@ export class TodoFormComponent {
   todo = TodoFactory.empty(); // man muss sich nicht mit undefined herumschlagen und hat immer eine Notiz zur Hand
   errors: { [key: string]: string } = {};
   isUpdatingTodo = false;
+  images: FormArray;
+  notes: Array<any> = [];
 
   constructor(
     private fb: FormBuilder,
@@ -26,9 +29,11 @@ export class TodoFormComponent {
     private router: Router
   ) {
     this.todoForm = this.fb.group({});
+    this.images = this.fb.array([]);
   }
 
   ngOnInit() {
+    this.loadNotes();
     const id = this.route.snapshot.params["id"];
     if (id) {
       this.isUpdatingTodo = true;
@@ -40,16 +45,46 @@ export class TodoFormComponent {
     this.initTodo();
   }
 
+  loadNotes() {
+    this.kwmen.getAllNotes().subscribe(notes => {
+      this.notes = notes;
+    });
+  }
+
   initTodo() {
+    this.buildThumbnailsArray();
     this.todoForm = this.fb.group({
       id: this.todo.id,
       title: [this.todo.title, Validators.required],
       description: this.todo.description,
-      due: this.todo.due,
-      isPublic: this.todo.isPublic
+      due: [this.todo.due, Validators.required],
+      isPublic: this.todo.isPublic,
+      note_id: [this.todo.note_id, Validators.required],
+      images: this.images
     });
     this.todoForm.statusChanges.subscribe(() =>
       this.updateErrorMessages());
+  }
+
+  buildThumbnailsArray() {
+    if(this.todo.images) {
+      this.images = this.fb.array([]);
+
+      for(let img of this.todo.images) {
+        let fg = this.fb.group ({
+          id: new FormControl(img.id),
+          url: new FormControl(img.url, [Validators.required]),
+          title: new FormControl(img.title, [Validators.required])
+        });
+        this.images.push(fg);
+      }
+      if(this.todo.images.length === 0)
+        this.addThumbnailControl();
+    }
+  }
+
+  addThumbnailControl() {
+    this.images.push(this.fb.group({id: 0, url: null, title: null}));
   }
 
   submitForm() {
@@ -63,7 +98,6 @@ export class TodoFormComponent {
         });
       });
     } else {
-
       console.log(todo);
       this.kwmen.createTodo(todo).subscribe(res => {
         this.todo = TodoFactory.empty();
@@ -73,11 +107,10 @@ export class TodoFormComponent {
     }
   }
 
-
   updateErrorMessages() {
     console.log("Is invalid? " + this.todoForm.invalid);
     this.errors = {};
-    for (const message of this.TodoFormErrorMessages) {
+    for (const message of TodoFormErrorMessages) {
       const control = this.todoForm.get(message.forControl);
       if (
         control &&
@@ -90,5 +123,4 @@ export class TodoFormComponent {
       }
     }
   }
-
 }

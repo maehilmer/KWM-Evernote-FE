@@ -9,9 +9,7 @@ import {Label} from "../shared/label";
 @Component({
   selector: 'kwmen-label-form',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    RouterLink
+  imports: [ReactiveFormsModule, RouterLink
   ],
   templateUrl: './label-form.component.html',
   styles: ``
