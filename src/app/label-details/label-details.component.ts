@@ -3,6 +3,7 @@ import {Label} from "../shared/label";
 import {LabelFactory} from "../shared/label-factory";
 import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'kwmen-label-details',
@@ -17,7 +18,8 @@ export class LabelDetailsComponent {
   constructor(
     private kwmen: KwmevernoteStoreService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthenticationService
   ) { }
   ngOnInit() {
     const params = this.route.snapshot.params;

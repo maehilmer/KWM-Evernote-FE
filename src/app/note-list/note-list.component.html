@@ -5,12 +5,14 @@
       <h1>Notizen</h1>
     </div>
     <div class="four wide column right aligned">
-      <div class="ui right pointing label">
-        Neue Notiz hinzufügen!
-      </div>
-      <a [routerLink]="['../admin']" class="circular ui icon button">
-        <i class="icon plus"></i>
-      </a>
+      @if(authService.isLoggedIn()){
+        <div class="ui right pointing label">
+          Neue Notiz hinzufügen!
+        </div>
+        <a [routerLink]="['../admin']" class="circular ui icon button">
+          <i class="icon plus"></i>
+        </a>
+      }
     </div>
   </div>
   <div>

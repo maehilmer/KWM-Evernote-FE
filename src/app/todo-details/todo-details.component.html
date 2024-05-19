@@ -23,15 +23,17 @@
       }
     </div>
     <div class="four wide column right aligned">
-      <!-- UPDATEN -->
-      <button [routerLink]="['../../adminTodo', todo.id]" class="circular ui icon button">
-        <i class="icon pencil alternate"></i>
-      </button>
+      @if(authService.isLoggedIn()){
+          <!-- UPDATEN -->
+        <button [routerLink]="['../../adminTodo', todo.id]" class="circular ui icon button">
+          <i class="icon pencil alternate"></i>
+        </button>
 
-      <!-- LÖSCHEN -->
-      <button (click)="removeTodo()" class="circular red ui icon button">
-        <i class="icon trash"></i>
-      </button>
+        <!-- LÖSCHEN -->
+        <button (click)="removeTodo()" class="circular red ui icon button">
+          <i class="icon trash"></i>
+        </button>
+      }
     </div>
   </div>
 

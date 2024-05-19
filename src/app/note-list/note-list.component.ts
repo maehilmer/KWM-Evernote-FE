@@ -4,6 +4,7 @@ import {NoteListItemComponent} from "../note-list-item/note-list-item.component"
 import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {SearchComponent} from "../search/search.component";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'kwmen-note-list',
@@ -15,7 +16,8 @@ import {SearchComponent} from "../search/search.component";
 export class NoteListComponent implements OnInit{
   notes: Note[] = [];
 
-  constructor(private kwmen: KwmevernoteStoreService, private router: Router, private route: ActivatedRoute){ }
+  constructor(private kwmen: KwmevernoteStoreService,
+              public authService: AuthenticationService){ }
 
   ngOnInit() {
     this.kwmen.getAllNotes().subscribe(res => this.notes = res);

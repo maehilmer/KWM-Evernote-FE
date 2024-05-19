@@ -1,7 +1,7 @@
 <div class="ui search" [ngClass]="{ loading: isLoading }">
   <div class="ui icon input">
     <input (keyup)="keyup.emit(searchTerm.value)" #searchTerm class="prompt"
-           type="text" placeholder="Suche...">
+           type="text" placeholder="Suche nach einer Notiz!">
     <i class="search icon"></i>
   </div>
   <div class="results transition" [ngClass]="{ visible: foundNotes.length}">

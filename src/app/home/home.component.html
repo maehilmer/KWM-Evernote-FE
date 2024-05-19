@@ -1,8 +1,14 @@
 <div class="ui container">
-  <h1>Home</h1>
-  <p>Willkommen bei KWM Evernoe!</p>
+
+  <div class="ui grid">
+    <div class="ten wide column">
+      <h1>Willkommen!</h1>
+    </div>
+    <div class="six wide column right aligned">
+      <!-- Suche -->
+      <kwmen-search (noteSelected)="noteSelected($event)" class="column"></kwmen-search>
+    </div>
+  </div>
+
   <a routerLink="../notes" class="ui red button">Notizen ansehen</a>
-
-
-  <kwmen-search (noteSelected)="noteSelected($event)" class="column"></kwmen-search>
 </div>

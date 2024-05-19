@@ -4,6 +4,7 @@ import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
 import {LabelListItemComponent} from "../label-list-item/label-list-item.component";
 import {RouterLink} from "@angular/router";
 import {ListoverviewListItemComponent} from "../listoverview-list-item/listoverview-list-item.component";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'kwmen-label-list',
@@ -15,7 +16,8 @@ import {ListoverviewListItemComponent} from "../listoverview-list-item/listoverv
 export class LabelListComponent implements OnInit{
   labels: Label[] = [];
 
-  constructor(private kwmen: KwmevernoteStoreService){ }
+  constructor(private kwmen: KwmevernoteStoreService,
+              public authService: AuthenticationService){ }
 
   ngOnInit() {
     this.kwmen.getAllLabels().subscribe(res => this.labels = res);

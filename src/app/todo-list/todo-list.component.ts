@@ -3,6 +3,7 @@ import {Label, Todo, Image} from "../shared/todo";
 import {TodoListItemComponent} from "../todo-list-item/todo-list-item.component";
 import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
 import {RouterLink} from "@angular/router";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'kwmen-todo-list',
@@ -14,7 +15,8 @@ import {RouterLink} from "@angular/router";
 export class TodoListComponent implements OnInit{
   todos: Todo[] = [];
 
-  constructor(private kwmen: KwmevernoteStoreService){ }
+  constructor(private kwmen: KwmevernoteStoreService,
+              public authService: AuthenticationService){ }
 
 
   ngOnInit() {

@@ -3,6 +3,7 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
 import {Listoverview} from "../shared/listoverview";
 import {ListoverviewFactory} from "../shared/listoverview-factory";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'kwmen-listoverview-details',
@@ -16,7 +17,8 @@ export class ListoverviewDetailsComponent implements OnInit {
   constructor(
     private kwmen: KwmevernoteStoreService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthenticationService
   ) { }
   ngOnInit() {
     const params = this.route.snapshot.params;

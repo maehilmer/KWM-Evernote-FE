@@ -8,15 +8,17 @@
       </button>
     </div>
     <div class="four wide column right aligned">
-      <!-- UPDATEN  sf-->
-      <button [routerLink]="['../../adminLabel', label.id]" class="circular ui icon button">
-        <i class="icon pencil alternate"></i>
-      </button>
+      @if(authService.isLoggedIn()){
+        <!-- UPDATEN  sf-->
+        <button [routerLink]="['../../adminLabel', label.id]" class="circular ui icon button">
+          <i class="icon pencil alternate"></i>
+        </button>
 
-      <!-- LÖSCHEN -->
-      <button (click)="removeLabel()" class="circular red ui icon button">
-        <i class="icon trash"></i>
-      </button>
+        <!-- LÖSCHEN -->
+        <button (click)="removeLabel()" class="circular red ui icon button">
+          <i class="icon trash"></i>
+        </button>
+      }
     </div>
   </div>
 

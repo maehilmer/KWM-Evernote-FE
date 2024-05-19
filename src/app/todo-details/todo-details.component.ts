@@ -4,6 +4,7 @@ import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {TodoFactory} from "../shared/todo-factory";
 import {DatePipe} from "@angular/common";
+import {AuthenticationService} from "../shared/authentication.service";
 
 @Component({
   selector: 'kwmen-todo-details',
@@ -18,7 +19,8 @@ export class TodoDetailsComponent implements OnInit {
   constructor(
     private kwmen: KwmevernoteStoreService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public authService: AuthenticationService
   ) { }
   ngOnInit() {
     const params = this.route.snapshot.params;
