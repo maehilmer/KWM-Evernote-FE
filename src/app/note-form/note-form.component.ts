@@ -19,7 +19,6 @@ export class NoteFormComponent {
   errors: { [key: string]: string } = {};
   isUpdatingNote = false;
   images: FormArray;
-
   listoverviews: Array<any> = [];
 
   constructor(
@@ -36,8 +35,6 @@ export class NoteFormComponent {
   // abprüfen der route
   ngOnInit() {
     this.loadListoverviews();
-    /*this.loadTodos();*/
-
     const id = this.route.snapshot.params["id"];
     if (id) {
       this.isUpdatingNote = true;
@@ -62,7 +59,7 @@ export class NoteFormComponent {
       title: [this.note.title, Validators.required],
       description: this.note.description,
       listoverview_id: [this.note.listoverview_id, Validators.required],
-      images: this.images
+      images: this.images,
     });
     this.noteForm.statusChanges.subscribe(() =>
       this.updateErrorMessages());

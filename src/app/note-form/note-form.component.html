@@ -29,10 +29,7 @@
     <textarea formControlName="description" rows="5"></textarea>
   </div>
 
-
-  <!-- User -- Select -->
-
-  <!-- Liste -- Select -->
+  <!-- Liste  -->
   <div class="field">
     <label for="listoverview_id">Wähle eine Liste aus</label>
     <select id="listoverview_id" formControlName="listoverview_id">
@@ -45,8 +42,6 @@
     }
   </div>
 
-
-  <!-- Labels -- Multi Select? -->
 
   <!-- Bilder -->
   <div class="field">
@@ -73,8 +68,6 @@
       <div class="ui negative message">{{ errors['images'] }}</div>
     }
   </div>
-
-
 
   <!-- Speichern -->
   <button type="submit" class="ui button" [disabled]="noteForm.invalid">

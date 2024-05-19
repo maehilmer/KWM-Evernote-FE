@@ -54,6 +54,12 @@ export class KwmevernoteStoreService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  // suchen
+  getAllNotesSearch(searchTerm: string): Observable<Array<Note>> {
+    return this.http.get<Note>(`${this.api}/notes/search/${searchTerm}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
 
   // TODOS -------------------------------------------------------------------------------------------------------------
 

@@ -13,7 +13,7 @@ export class NoteFactory {
       rawNote.images,
       rawNote.labels,
       rawNote.todos,
-      rawNote.description,
+      rawNote.description
     );
   }
 }
