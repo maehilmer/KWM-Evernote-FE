@@ -1,14 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router, RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {KwmevernoteStoreService} from "../shared/kwmevernote-store.service";
 import {Listoverview} from "../shared/listoverview";
 import {ListoverviewFactory} from "../shared/listoverview-factory";
 import {AuthenticationService} from "../shared/authentication.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'kwmen-listoverview-details',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe, RouterLinkActive],
   templateUrl: './listoverview-details.component.html'
 })
 export class ListoverviewDetailsComponent implements OnInit {

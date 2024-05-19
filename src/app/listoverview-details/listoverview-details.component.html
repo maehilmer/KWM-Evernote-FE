@@ -36,5 +36,33 @@
   <!-- TITEL -->
   <div class="ui segment">
     <h2 class="ui header">{{ listoverview.title }}</h2>
+
+    <div class="ui divider"></div>
+
+    <!-- TO DO -->
+    <div>
+      <h3 class="ui header">Alle Notizen dieser Liste</h3>
+      <div class="ui cards">
+        @for (note of listoverview.notes; track note) {
+          <div class="card small">
+            <div class="content">
+              <h4>{{ note.title }}</h4>
+              <div class="description">
+                {{ note.description }}
+              </div>
+              <div class="ui hidden divider"></div>
+              @if(authService.isLoggedIn()){
+                <!-- ansehen und bearbeiten von To Do direkt in der Notiz Detail Ansicht -->
+                <div class="ui icon buttons">
+                  <!-- dynamisch id in route hinzufügen -->
+                  <a [routerLink]="['../../notes', note.id]" routerLinkActive="active" class="ui button"><i class="eye icon"></i></a>
+                  <a [routerLink]="['../../admin', note.id]" routerLinkActive="active" class="ui button"><i class="pencil alternate icon"></i></a>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
   </div>
 }
