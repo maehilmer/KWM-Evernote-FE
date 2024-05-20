@@ -54,8 +54,7 @@
         <h4>Bilder</h4>
         <div class="ui small images">
           @for (thumbnail of note.images; track thumbnail) {
-            <img class="ui rounded image"
-                 [src]="thumbnail.url"> <!-- Mit eckigen Klammern hat man Property Mapping -- dynamisch zusweisen -->
+            <img class="ui rounded image" [src]="thumbnail.url"> <!-- Mit eckigen Klammern hat man Property Mapping -- dynamisch zusweisen -->
           }
         </div>
       }
@@ -66,7 +65,17 @@
 
   <!-- TO DO -->
   <div>
-    <h3 class="ui header">Todos</h3>
+
+    <div class="ui grid">
+      <div class="seven wide column">
+        <h3>To Do Liste</h3>
+        <div class="ui small label blue basic ui">
+          <i class="icon info"></i> Du kannst ein To Do löschen, in dem du auf in die <u>Detailansicht</u> wechselst.
+        </div>
+      </div>
+    </div>
+
+    <div class></div>
     <div class="ui cards">
       @for (todo of note.todos; track todo) {
         <div class="card small">

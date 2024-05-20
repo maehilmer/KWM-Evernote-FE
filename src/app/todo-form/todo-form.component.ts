@@ -88,6 +88,9 @@ export class TodoFormComponent {
   }
 
   submitForm() {
+    // Array-Methode, die ein neues Array mit allen Elementen erstellt, die den Test bestehen, der in der bereitgestellten Funktion implementiert ist
+    this.todoForm.value.images = this.todoForm.value.images.filter(
+      (thumbnail: { url: string; }) => thumbnail.url); // Thumbnail ist Objekt mit min einer url-Eigenschaft -> Nur Thumbnails mit einer gültigen url bleiben im Array
 
     const todo: Todo = TodoFactory.fromObject(this.todoForm.value);
 

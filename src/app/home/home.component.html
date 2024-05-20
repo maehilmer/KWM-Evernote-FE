@@ -3,6 +3,12 @@
   <div class="ui grid">
     <div class="ten wide column">
       <h1>Willkommen!</h1>
+      @if(authService.isLoggedIn()){
+        <div>Willkommen in KWM Evernote!</div>
+        <div>Schreibe eine Notiz oder erstelle ein To Do!</div>
+      } @else {
+        <div>Du bist noch nicht angemeldet. <a routerLink="../login" class="">Logge Dich ein</a>, um Notizen und Todos schreiben zu können!</div>
+      }
     </div>
     <div class="six wide column right aligned">
       <!-- Suche -->
@@ -10,5 +16,41 @@
     </div>
   </div>
 
-  <a routerLink="../notes" class="ui red button">Notizen ansehen</a>
+  <div class="ui hidden divider"></div>
+
+  <div class="ui cards">
+    <div class="card">
+      <div class="content">
+        <div class="header">Notizen</div>
+        <div class="description">
+          Schreibe eine Notiz!
+        </div>
+      </div>
+      <div class="ui bottom attached button">
+        <a routerLink="../notes" class="">Notizen ansehen</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="content">
+        <div class="header">To Do's</div>
+        <div class="description">
+          Schreibe ein To Do!
+        </div>
+      </div>
+      <div class="ui bottom attached button">
+        <a routerLink="../todos" class="">To Do's ansehen</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="content">
+        <div class="header">Listen</div>
+        <div class="description">
+          Filtere deine Notizen nach Listen
+        </div>
+      </div>
+      <div class="ui bottom attached button">
+        <a routerLink="../listoverviews" class="">Listen ansehen</a>
+      </div>
+    </div>
+  </div>
 </div>
