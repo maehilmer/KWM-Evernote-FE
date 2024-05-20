@@ -50,14 +50,14 @@
                 {{ note.description }}
               </div>
               <div class="ui hidden divider"></div>
-              @if(authService.isLoggedIn()){
                 <!-- ansehen und bearbeiten von To Do direkt in der Notiz Detail Ansicht -->
                 <div class="ui icon buttons">
                   <!-- dynamisch id in route hinzufügen -->
                   <a [routerLink]="['../../notes', note.id]" routerLinkActive="active" class="ui button"><i class="eye icon"></i></a>
+                  @if(authService.isLoggedIn()){
                   <a [routerLink]="['../../admin', note.id]" routerLinkActive="active" class="ui button"><i class="pencil alternate icon"></i></a>
+                  }
                 </div>
-              }
             </div>
           </div>
         }
